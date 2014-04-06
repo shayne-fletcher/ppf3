@@ -1,0 +1,21 @@
+#pyd hello
+python-extension hello_ext
+  : # sources
+  [ glob *.cpp ]
+  /site-config//python
+  /site-config//boostpython
+  : # requirements
+  <define>PPF_HELLO_EXT_SOURCE 
+  <define>PPF_HELLO_EXT_DYNAMIC_LIB
+  <link>shared 
+  : # default build
+  release
+  : # usage requirements
+  <define>PPF_HELLO_EXT_DYNAMIC_LIB
+  ;
+
+install dist 
+  : hello_ext
+  : <install-dependencies>off
+    <location>$(PPF_ROOT)/../ppf/hello_ext
+  ;

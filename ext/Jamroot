@@ -1,0 +1,40 @@
+import os ;
+
+#we don't use this anymore since upgrading to the Boost.Build V2 (Milestone 12), Boost.Jam 03.1.16
+#that shipped with the Boost-1.36.0 distribution
+#import pyd ;
+
+import python ; #instead, we use the python-extension rule from here
+
+project #all ppf projects inherit these properties
+  : requirements 
+      <define>BOOST_ALL_NO_LIB # disable auto-linking
+      <include>.
+      <source>/site-config//boost_headers
+      <source>/site-config//python_headers
+      <source>/site-config//numpy_headers
+      <source>/site-config//blitz_headers
+      <toolset-msvc:version>9.0:<define>_CRT_SECURE_NO_WARNINGS
+      <toolset-msvc:version>9.0:<define>_SCL_SECURE_NO_WARNINGS
+      <toolset-msvc:version>9.0:<define>_CRT_SECURE_NO_DEPRECATE
+      <os>NT,<toolset-gcc:version>4.3:<linkflags>-shared-libgcc #enable exceptions to be thrown across shared library boundaries
+  : default-build 
+      release <link>shared
+  ;
+
+#install directories are specified relative to the directory
+#containing this file
+
+path-constant PPF_ROOT : . ;
+
+#symbolic identifiers
+
+use-project /ppf/math : lib/math/src ;
+use-project /ppf/date_time : lib/date_time/src ;
+
+#when bjam is invoked from this directory, build the following
+#projects
+
+build-project lib/math/src ;
+build-project lib/date_time/src ;
+build-project exe/imm_dates/src ;

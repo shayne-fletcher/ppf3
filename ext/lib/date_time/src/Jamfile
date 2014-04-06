@@ -1,0 +1,21 @@
+#pyd ppf_date_time
+python-extension ppf_date_time
+  : # sources
+  [ glob *.cpp ]
+  /site-config//python
+  /site-config//boostpython
+  : # requirements
+  <define>PPF_DATE_TIME_SOURCE 
+  <define>PPF_DATE_TIME_DYNAMIC_LIB
+  <link>shared 
+  : # default build
+  release
+  : # usage requirements
+  <define>PPF_DATE_TIME_DYNAMIC_LIB
+  ;
+
+install dist 
+  : ppf_date_time
+  : <install-dependencies>off
+    <location>$(PPF_ROOT)/../ppf/date_time
+  ;

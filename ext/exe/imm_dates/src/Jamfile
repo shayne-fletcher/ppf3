@@ -1,0 +1,20 @@
+exe imm_dates
+  : #sources
+  [ glob *.cpp ]
+  /site-config//python_headers
+  /site-config//python
+  /site-config//boostpython
+  : # requirements
+  <define>BOOST_PYTHON_DYNAMIC_LIB
+  <link>shared 
+  : # default build
+  release
+  : # usage requirements
+  ;
+
+install dist 
+  : imm_dates
+  : <install-dependencies>off
+    <variant>debug:<location>$(PPF_ROOT)/../example/imm_dates/debug
+    <variant>release:<location>$(PPF_ROOT)/../example/imm_dates/release
+  ;

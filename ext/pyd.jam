@@ -1,0 +1,23 @@
+import "class" : new ;
+import type ;
+import project ;
+import targets ;
+
+type.register PYD : : SHARED_LIB ;
+type.set-generated-target-suffix PYD : : pyd ;
+
+rule pyd ( name : sources * : requirements * : default-build * :
+                        usage-requirements * )
+{
+  local project = [ project.current ] ;
+
+  targets.main-target-alternative
+    [ new typed-target $(name) : $(project) : PYD
+      : [ targets.main-target-sources $(sources) : $(name) ]
+      : [ targets.main-target-requirements $(requirements) : $(project) ]
+      : [ targets.main-target-default-build $(default-build) : $(project) ]
+    ] 
+    ;
+}
+
+IMPORT pyd : pyd : : pyd ;

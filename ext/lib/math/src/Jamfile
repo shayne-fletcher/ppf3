@@ -1,0 +1,21 @@
+#pyd ppf_math
+python-extension ppf_math
+  : # sources
+  [ glob *.cpp ]
+  /site-config//python
+  /site-config//boostpython
+  : # requirements
+  <define>PPF_MATH_SOURCE 
+  <define>PPF_DYNAMIC_LIB
+  <link>shared 
+  : # default build
+  release
+  : # usage requirements
+  <define>PPF_MATH_DYNAMIC_LIB
+  ;
+
+install dist 
+  : ppf_math
+  : <install-dependencies>off
+    <location>$(PPF_ROOT)/../ppf/math
+  ;
