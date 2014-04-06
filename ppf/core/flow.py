@@ -38,7 +38,7 @@ class flow(object):
     s += "[%s, %s], " % (self.__accrual_start_date, self.__accrual_end_date)
     s += "%s, " % day_count_basis_strings[self.__accrual_basis]
     s += "%s, " %  self.__pay_date
-    if self.__observables <> None:
+    if self.__observables != None:
       for observable in self.__observables:
         s += observable.__str__()
     return s

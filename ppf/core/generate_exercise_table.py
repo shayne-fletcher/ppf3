@@ -1,5 +1,5 @@
 import ppf.date_time
-from exercise import *
+from .exercise import *
 
 def generate_exercise_table(
    start

@@ -1,7 +1,7 @@
-from fixing import *
-from observable import *
-from generate_flows import *
-from generate_observables import *
+from .fixing import *
+from .observable import *
+from .generate_flows import *
+from .generate_observables import *
 
 class swap_rate(observable):
   def __init__(self

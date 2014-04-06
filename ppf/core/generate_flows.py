@@ -1,5 +1,5 @@
 import ppf.date_time
-from flow import *
+from .flow import *
 
 def generate_flows(
    start
@@ -77,9 +77,9 @@ def generate_flows(
       day = roll_end
       i += 1
       
-  if observables <> None:
-    if len(observables) <> len(flows):
-      raise RuntimeError, "too few or too many observables"
+  if observables != None:
+    if len(observables) != len(flows):
+      raise RuntimeError ("too few or too many observables")
     for i in range(len(flows)):
       f = flows[i]
       obs = observables[i]

@@ -37,12 +37,12 @@ class controller(object):
 
   def retrieve_symbol(self, name):
     if not self.__symbol_table.has_key(name):
-      raise RuntimeError, "name not found in symbol table"
+      raise RuntimeError ("name not found in symbol table")
     return self.__symbol_table.get(name)[1]
 
   def retrieve_symbol_update_time(self, name):
     if not self.__symbol_table.has_key(name):
-      raise RuntimeError, "name not found in symbol table"
+      raise RuntimeError ("name not found in symbol table")
     return self.__symbol_table.get(name)[0]
 
   def retrieve_symbols_to_rollback(self, at):
@@ -77,7 +77,7 @@ class controller(object):
         fixing = fix.value()
         return fixing
       else:
-        raise RuntimeError, 'libor in the past with no fixing'
+        raise RuntimeError ('libor in the past with no fixing')
       endif      
     else:
       fill = self.__model.fill()
@@ -95,7 +95,7 @@ class controller(object):
         fixing = fix.value()
         return fixing
       else:
-        raise RuntimeError, 'libor in the past with no fixing'
+        raise RuntimeError ('libor in the past with no fixing')
       endif      
     else:
       fill = self.__model.fill()
@@ -122,7 +122,7 @@ class controller(object):
 
   def numeraire(self, t):
     if t < 0:
-      raise RuntimeError, "attempting to call 'numeraire' in the past"
+      raise RuntimeError ("attempting to call 'numeraire' in the past")
     fill = self.__model.fill()
     requestor = self.__model.requestor()
     state = self.__model.state().fill(t, requestor, self.__env)
@@ -130,7 +130,7 @@ class controller(object):
 
   def explanatory_variables(self, t):
     if t < 0:
-      raise RuntimeError, "attempting to call 'explanatory_variables' in the past"
+      raise RuntimeError ("attempting to call 'explanatory_variables' in the past")
     fill = self.__model.fill()
     requestor = self.__model.requestor()
     state = self.__model.state().fill(t, requestor, self.__env)

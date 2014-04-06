@@ -1,7 +1,7 @@
 from ppf.date_time import *
-from trade import *
-from leg import *
-from flow import *
+from .trade import *
+from .leg import *
+from .flow import *
 
 def final_important_date(trd):
   '''
@@ -66,7 +66,7 @@ def final_important_date(trd):
       candidate_date = f.pay_date()
       observables = f.observables()
       if not observables:
-        raise RuntimeError, "Missing observables"
+        raise RuntimeError ("Missing observables")
       for o in observables:
         if o.last_important_date() > candidate_date:
           candidate_date = o.last_important_date()
@@ -139,15 +139,15 @@ def enforce_single_currency(trd):
       pay_ccy = f.pay_currency()
       observables = f.observables()
       if not observables:
-        raise RuntimeError, "Missing observables"
+        raise RuntimeError ("Missing observables")
       for o in observables:
         reset_ccy = o.reset_currency()
         if ccys.count(reset_ccy) == 0:
           ccys.append(reset_ccy)
       if ccys.count(pay_ccy) == 0:
         ccys.append(pay_ccy)
-  if len(ccys) <> 1:
-    raise RuntimeError, "expected one currency"  
+  if len(ccys) != 1:
+    raise RuntimeError ("expected one currency")
   return ccys[0]
 
 def enforce_no_exercise_stubs(trd):
@@ -161,7 +161,7 @@ def enforce_no_exercise_stubs(trd):
     for exercise in exercises:
       notification_date = exercise.notification_date()        
       if accrual_start_dates.count(notification_date) == 0:
-        raise RuntimeError, "exercise stub encountered"        
+        raise RuntimeError ("exercise stub encountered")
   
 def is_last_flow(lg, flw):
   flws = lg.flows()

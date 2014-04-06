@@ -1,7 +1,7 @@
 import ppf.date_time
-from fixed_coupon import *
-from libor_rate import *
-from swap_rate import *
+from .fixed_coupon import *
+from .libor_rate import *
+from .swap_rate import *
 
 def generate_fixed_coupon_observables(
    start
@@ -126,7 +126,7 @@ def generate_libor_observables(
   shift = ppf.date_time.shift
 
   if reset_lag > 0:
-    raise RuntimeError, "index lag expected less or equal to zero"
+    raise RuntimeError ("index lag expected less or equal to zero")
 
   day, flow_id, all_observables = 0, 0, []
   while day < end:
@@ -214,7 +214,7 @@ def generate_swap_observables(
   shift = ppf.date_time.shift
 
   if reset_lag > 0:
-    raise RuntimeError, "index lag expected less or equal to zero"
+    raise RuntimeError ("index lag expected less or equal to zero")
 
   day, flow_id, all_observables = 0, 0, []
   while day < end:

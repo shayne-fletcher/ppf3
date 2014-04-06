@@ -1,5 +1,5 @@
 import ppf.date_time
-from adjuvant_table import *
+from .adjuvant_table import *
 
 def generate_adjuvant_table(
    keys
@@ -26,10 +26,10 @@ def generate_adjuvant_table(
   {'coupon': {2455138: 0.06, 2455684: 0.07, 2454953: 0.05, 2455502: 0.07, 2454774: 0.05, 2455320: 0.06}, 'spread': {2455138: 0.006, 2455684: 0.007, 2454953: 0.005, 2455502: 0.007, 2454774: 0.005, 2455320: 0.006}}
 
   '''
-  if len(values.shape) <> 2:
-    raise RuntimeError, "expected 2d array of values"
-  if len(keys) <> values.shape[0] or len(tenors) <> values.shape[1]:
-    raise RuntimeError, "incorrect size of values array"
+  if len(values.shape) != 2:
+    raise RuntimeError ("expected 2d array of values")
+  if len(keys) != values.shape[0] or len(tenors) != values.shape[1]:
+    raise RuntimeError ("incorrect size of values array")
 
   from ppf.date_time import days
   shift = ppf.date_time.shift
@@ -42,7 +42,7 @@ def generate_adjuvant_table(
   for tenor in tenors:
     end = start_date+roll_duration(tenor)
     if end < day:
-      raise RuntimeError, "tenors are not monotonically increasing"
+      raise RuntimeError ("tenors are not monotonically increasing")
     i = 0    
     while day < end:
       roll_start = start+roll_duration(i*roll_period)

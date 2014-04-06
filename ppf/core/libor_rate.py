@@ -1,8 +1,8 @@
 from ppf.date_time import year_fraction
 from ppf.date_time.day_count_basis import day_count_basis_strings
 
-from fixing import *
-from observable import *
+from .fixing import *
+from .observable import *
 
 class libor_rate(observable):
   def __init__(self
@@ -91,7 +91,7 @@ class libor_rate(observable):
       if fix.is_fixed():
          s += "%f, " % fix.value()
       spread = self.spread()
-      if spread <> None:
+      if spread != None:
          s += "%f, " % spread
       return s
 

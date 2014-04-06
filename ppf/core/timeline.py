@@ -1,9 +1,9 @@
 from types import *
-from trade import *
-from leg import *
-from flow import *
-from exercise import *
-from event import *
+from .trade import *
+from .leg import *
+from .flow import *
+from .exercise import *
+from .event import *
 
 class timeline(object):
   '''
@@ -94,7 +94,7 @@ class timeline(object):
          if f.pay_date() >= pricing_date]:
         observables = f.observables()
         if not observables:
-          raise RuntimeError, "Missing observables"
+          raise RuntimeError ("Missing observables")
         for o in observables:
           self.__add_event_(
               o.reset_date()

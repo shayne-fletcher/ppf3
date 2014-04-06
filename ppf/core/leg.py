@@ -49,19 +49,19 @@ class leg(object):
     return self.__pay_or_receive
 
   def has_adjuvant_table(self):
-    return self.__adjuvant_table <> None
+    return self.__adjuvant_table != None
 
   def has_payoff(self):
-    return self.__payoff <> None
+    return self.__payoff != None
 
   def adjuvant_table(self):
     if self.__adjuvant_table == None:
-      raise RumtimeError, "Null adjuvant table"
+      raise RumtimeError ("Null adjuvant table")
     return self.__adjuvant_table
 
   def payoff(self):
     if self.__payoff == None:
-      raise RumtimeError, "Null payoff"
+      raise RumtimeError ("Null payoff")
     return self.__payoff
 
 def _test():

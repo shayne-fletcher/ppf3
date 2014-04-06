@@ -12,8 +12,8 @@ class exercise:
     self.__exercise_date = exercise_date
     self.__fee = fee
     self.__fee_ccy = fee_ccy
-    if fee <> None and fee_ccy == None:
-      raise RuntimeError, "non-zero fee with no currency"
+    if fee != None and fee_ccy == None:
+      raise RuntimeError ("non-zero fee with no currency")
 
   def notification_date(self): return self.__notification_date
   def exercise_date(self): return self.__exercise_date
@@ -23,7 +23,7 @@ class exercise:
   def __str__(self):
     s = "%s, " % self.__notification_date
     s += "%s, " % self.__exercise_date
-    if self.__fee <> None:
+    if self.__fee != None:
       s += "%f, " %  self.__fee
       s += "%s, " % self.__fee_ccy
     return s

@@ -37,12 +37,12 @@ class trade(object):
 
   def exercise_type(self):
     if not self.__exercise_info:
-      raise RuntimeError, "missing exercise information"
+      raise RuntimeError ("missing exercise information")
     return self.__exercise_info[1]
 
   def exercise_schedule(self):
     if not self.__exercise_info:
-      raise RuntimeError, "missing exercise information"
+      raise RuntimeError ("missing exercise information")
     return self.__exercise_info[0]
 
   def has_exercise_schedule(self):
